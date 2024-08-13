@@ -340,6 +340,7 @@ MonoBehaviour:
   - {fileID: 550732859}
   - {fileID: 329153318}
   - {fileID: 240227589}
+  obj_aircraft: {fileID: 174379491}
 --- !u!4 &698428652
 Transform:
   m_ObjectHideFlags: 0
