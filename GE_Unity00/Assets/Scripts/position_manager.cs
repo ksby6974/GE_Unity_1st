@@ -11,7 +11,7 @@ public class position_manager : MonoBehaviour
     void Start()
     {
         //Invoke("ResetPosition",5);
-        InvokeRepeating("ResetPosition", 0, 5);
+        InvokeRepeating("ResetPosition", 0, 2);
     }
 
     // Update is called once per frame
