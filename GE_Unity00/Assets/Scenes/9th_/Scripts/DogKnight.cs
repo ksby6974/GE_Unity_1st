@@ -15,12 +15,16 @@ public class DogKnight : MonoBehaviour
 {
     [SerializeField] State state;
     [SerializeField] Animator animator;
+    [SerializeField] float fSpeed;
+    [SerializeField] bool bDead;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         state = State.IDLE;
+        fSpeed = 4f;
+        bDead = false;
     }
 
     // Update is called once per frame
@@ -58,6 +62,7 @@ public class DogKnight : MonoBehaviour
     public void State_Walk()
     {
         animator.SetBool("isMoving", true);
+
         Debug.Log($"Walk");
     }
 
@@ -69,22 +74,74 @@ public class DogKnight : MonoBehaviour
 
     public void State_Die()
     {
+        animator.SetBool("isMoving", false);
+        animator.SetBool("isAttack", false);
+        animator.Play("Die");
         Debug.Log($"Die");
     }
 
+    #region
+    private void OnTriggerEnter(Collider other)
+    {
+        //충돌이 일어났을 때 호출되는 이벤트 함수
+        Debug.Log($"OnTriggerEnter");
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        //충돌이 진행중일 때 호출되는 이벤트 함수
+        Debug.Log($"OnTriggerStay");
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        //충돌이 끝났을 때 호출되는 이벤트 함수
+
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            state = State.DIE;
+            bDead = true;
+        }
+        Debug.Log($"OnTriggerExit");
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // 물리적인 충돌이 일어났을 때 호출되는 이벤트 함수
+        Debug.Log($"OnCollisionEnter");
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        // 물리적인 충돌이 진행중일 때 호출되는 이벤트 함수
+        Debug.Log($"OnCollisionStay");
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        // 물리적인 충돌이 끝났을 때 호출되는 이벤트 함수
+        Debug.Log($"OnCollisionExit");
+    }
+    #endregion
+
     public void Move()
     {
+        if (bDead == true)
+        {
+            return;
+        }
+
         int iAttack = 0;
         float fMoveZ = 0;
 
         if (Input.GetKey(KeyCode.D))
         {
-            fMoveZ += 5f;
+            fMoveZ += fSpeed;
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            fMoveZ += -5f;
+            fMoveZ -= fSpeed;
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -107,45 +164,6 @@ public class DogKnight : MonoBehaviour
             state = State.IDLE;
         }
 
-        transform.Translate(new Vector3(0, 0, fMoveZ) * Time.deltaTime);
+        transform.Translate(new Vector3(0, 0, fMoveZ * Time.deltaTime));
     }
-
-
-    #region
-    private void OnTriggerEnter(Collider other)
-    {
-        //충돌이 일어났을 때 호출되는 이벤트 함수
-        Debug.Log($"OnTriggerEnter");
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        //충돌이 진행중일 때 호출되는 이벤트 함수
-        Debug.Log($"OnTriggerStay");
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        //충돌이 끝났을 때 호출되는 이벤트 함수
-        Debug.Log($"OnTriggerExit");
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        // 물리적인 충돌이 일어났을 때 호출되는 이벤트 함수
-        Debug.Log($"OnCollisionEnter");
-    }
-
-    private void OnCollisionStay(Collision collision)
-    {
-        // 물리적인 충돌이 진행중일 때 호출되는 이벤트 함수
-        Debug.Log($"OnCollisionStay");
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        // 물리적인 충돌이 끝났을 때 호출되는 이벤트 함수
-        Debug.Log($"OnCollisionExit");
-    }
-    #endregion
 }
