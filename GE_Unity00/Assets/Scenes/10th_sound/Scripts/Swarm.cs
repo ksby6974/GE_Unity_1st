@@ -19,8 +19,6 @@ public class Swarm : MonoBehaviour
     [SerializeField] float fSpeed;
     [SerializeField] bool bDead;
     [SerializeField] bool bAttack;
-    [SerializeField] bool bMove;
-    [SerializeField] int iHp = 10;
     private int fLimit = 5;
     private int iAttackCount = 0;
     private float fTime = 0;
@@ -32,10 +30,8 @@ public class Swarm : MonoBehaviour
         state = State.IDLE;
         animator = GetComponent<Animator>();
         fSpeed = 2f;
-        bMove = false;
         bDead = false;
         bAttack = false;
-        iHp = 10;
     }
 
     // Update is called once per frame
