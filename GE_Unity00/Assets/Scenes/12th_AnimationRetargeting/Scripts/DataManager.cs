@@ -9,6 +9,7 @@ public class DataManager : MonoBehaviour
     [SerializeField] int upScore;
     [SerializeField] TextMeshProUGUI textTotalScore;
     [SerializeField] TextMeshProUGUI textUpScore;
+    [SerializeField] UI_Score scoreUI;
 
     // Start is called before the first frame update
     void Awake()
@@ -30,7 +31,8 @@ public class DataManager : MonoBehaviour
 
     public void IncreaseScore()
     {
-        upScore = Random.Range(5,10);
+        upScore = Random.Range(5,11);
+        int iTemp = upScore;
 
         if (upScore > 0)
         {
@@ -42,6 +44,8 @@ public class DataManager : MonoBehaviour
         }
 
         TotalScore += upScore;
+
+        scoreUI.OnUpdate(iTemp);
         PlayerPrefs.SetInt("Score", TotalScore);
     }
 
