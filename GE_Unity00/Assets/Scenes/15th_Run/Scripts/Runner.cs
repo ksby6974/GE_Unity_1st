@@ -15,7 +15,7 @@ public class Runner : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] Rigidbody rigidbody;
     [SerializeField] float fMove;
-    [SerializeField] int positionX;
+    [SerializeField] float fSpeed;
 
     void Awake()
     {
@@ -23,6 +23,7 @@ public class Runner : MonoBehaviour
         animator = GetComponent<Animator>();
         roadLine = RoadLine.MIDDLE;
         fMove = 2.0f;
+        fSpeed = 25.0f;
     }
 
     // Start is called before the first frame update
@@ -39,15 +40,20 @@ public class Runner : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //rigidbody.position = new Vector3(positionX * (int)roadLine, rigidbody.position.y, rigidbody.position.z);
+        SetPosition();
     }
 
-    void SetPosition(float value)
+    void SetPosition()
     {
-        //rigidbody.position이 transform.position보다 연산이 더 빠름
-        rigidbody.position = new Vector3(rigidbody.position.x + value, rigidbody.position.y, rigidbody.position.z);
+        // 부드러운 좌표 이동
+        rigidbody.position = Vector3.Lerp(rigidbody.position, new Vector3(fMove * (int)roadLine, rigidbody.position.y, rigidbody.position.z), fSpeed * Time.fixedDeltaTime);
+        //rigidbody.rotation = 
 
+        // 그냥 좌표 이동
         //this.transform.position = new Vector3(this.transform.position.x + value, this.transform.position.y, this.transform.position.z);
+
+        //rigidbody.position이 transform.position보다 연산이 더 빠름
+        //rigidbody.position = new Vector3(rigidbody.position.x + value, rigidbody.position.y, rigidbody.position.z);
     }
 
     void RunnerMove()
@@ -61,7 +67,7 @@ public class Runner : MonoBehaviour
             if (roadLine != RoadLine.LEFT)
             {
                 roadLine--;
-                SetPosition(-fMove);
+                //SetPosition(-fMove);
             }
 
         }
@@ -70,7 +76,7 @@ public class Runner : MonoBehaviour
             if (roadLine != RoadLine.RIGHT)
             {
                 roadLine++;
-                SetPosition(fMove);
+                //SetPosition(fMove);
             }
         }
 
