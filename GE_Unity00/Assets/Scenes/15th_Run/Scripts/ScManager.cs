@@ -4,15 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ScManager : MonoBehaviour
+public class ScManager : Singleton<InputManager>
 {
     [SerializeField] Image image_fade;
-
-    void Awake()
-    {
-        // 신이 넘어가도 DontDestroyOnLoad 메모리에 해당 오브젝트가 계속 남아있음
-        DontDestroyOnLoad(gameObject);
-    }
 
     private void OnEnable()
     {
