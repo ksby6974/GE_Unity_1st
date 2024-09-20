@@ -38,6 +38,8 @@ public class RoadManager : MonoBehaviour
 
     public void NewPosition()
     {
+        Debug.Log($"NewPosition");
+
         GameObject newRoad = listroads[0];
         listroads.Remove(newRoad);
 

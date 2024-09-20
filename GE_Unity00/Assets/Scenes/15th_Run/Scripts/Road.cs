@@ -9,6 +9,7 @@ public class Road : MonoBehaviour, IHitable
 
     public void Activate()
     {
+        callback.Invoke();
         Debug.Log($"Ãæµ¹");
     }
 }

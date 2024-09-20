@@ -44,7 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a93d240a24aa5c942a4d6fc0b2b1eda7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Coins: {fileID: 2630948928160853164, guid: f7a62a4005702b34681f9f1f2ca3e065, type: 3}
+  Coin: {fileID: 2630948928160853164, guid: f7a62a4005702b34681f9f1f2ca3e065, type: 3}
+  Coins: []
   fSpeed: 0
   fOffset: 0
   iCount: 0
+  fPositionX: 0

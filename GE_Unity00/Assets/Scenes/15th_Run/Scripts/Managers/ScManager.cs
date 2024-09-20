@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ScManager : Singleton<InputManager>
+public class ScManager : Singleton<ScManager>
 {
     [SerializeField] Image image_fade;
 
@@ -72,8 +72,7 @@ public class ScManager : Singleton<InputManager>
         if (Input.GetKeyDown(KeyCode.Space))
         {
             //SceneManager.LoadScene(1);
-
-            StartCoroutine(AsyncLoad(1));
+            ChangeScene();
         }
     }
 
@@ -87,5 +86,10 @@ public class ScManager : Singleton<InputManager>
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    public void ChangeScene()
+    {
+        StartCoroutine(AsyncLoad(1));
     }
 }

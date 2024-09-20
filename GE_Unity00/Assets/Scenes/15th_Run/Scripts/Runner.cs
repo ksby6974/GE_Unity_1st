@@ -22,7 +22,7 @@ public class Runner : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         roadLine = RoadLine.MIDDLE;
-        fMove = 2.0f;
+        fMove = 4.0f;
         fSpeed = 25.0f;
     }
 
@@ -34,7 +34,7 @@ public class Runner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        OnKeyUpdate();
+       //OnKeyUpdate();
     }
 
     private void FixedUpdate()
@@ -45,13 +45,22 @@ public class Runner : MonoBehaviour
     void SetPosition()
     {
         // 부드러운 좌표 이동
-        rigidbody.position = Vector3.Lerp(rigidbody.position, new Vector3(fMove * (int)roadLine, rigidbody.position.y, rigidbody.position.z), fSpeed * Time.fixedDeltaTime);
+        rigidbody.position = Vector3.Lerp
+        (
+            rigidbody.position,
+            new Vector3(fMove * (int)roadLine, rigidbody.position.y, rigidbody.position.z), fSpeed * Time.fixedDeltaTime
+        );
 
         // 그냥 좌표 이동
         //this.transform.position = new Vector3(this.transform.position.x + value, this.transform.position.y, this.transform.position.z);
 
         //rigidbody.position이 transform.position보다 연산이 더 빠름
         //rigidbody.position = new Vector3(rigidbody.position.x + value, rigidbody.position.y, rigidbody.position.z);
+    }
+
+    private void OnDisable()
+    {
+        InputManager.Instance.action -= OnKeyUpdate;
     }
 
     void OnKeyUpdate()
@@ -76,10 +85,5 @@ public class Runner : MonoBehaviour
                 Debug.Log($"우 {roadLine}");
             }
         }
-    }
-
-    private void OnDisable()
-    {
-        InputManager.Instance.action -= OnKeyUpdate;
     }
 }
