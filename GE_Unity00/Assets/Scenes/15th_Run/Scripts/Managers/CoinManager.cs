@@ -24,6 +24,7 @@ public class CoinManager : MonoBehaviour
     void Start()
     {
         CreateCoin();
+        InitializePosition();
     }
 
     void CreateCoin()
@@ -44,6 +45,8 @@ public class CoinManager : MonoBehaviour
                 clone.name = clone.name.Substring(0, iIndex);
             }
 
+            clone.GetComponent<MeshRenderer>().enabled = false;
+
             //clone.gameObject.SetActive(false);
             Coins.Add(clone);
         }
@@ -51,13 +54,20 @@ public class CoinManager : MonoBehaviour
 
     public void InitializePosition()
     {
-        Debug.Log($"InitializePosition");
+        string sTemp = null;
+        Debug.Log($"CoinManager - InitializePosition");
         transform.localPosition = new Vector3(fPositionX * Random.Range(-1, 2), 0, 0);
 
         for (int i = 0; i < iCount; i++)
         {
-            //Coins[i].gameObject.SetActive(true);
-            Debug.Log($"{i}");
+            if (Coins[i].GetComponent<MeshRenderer>().enabled == false)
+            {
+                Coins[i].GetComponent<MeshRenderer>().enabled = true;
+            }
+
+            sTemp += $"{i} ";
         }
+
+        Debug.Log($"{sTemp}");
     }
 }

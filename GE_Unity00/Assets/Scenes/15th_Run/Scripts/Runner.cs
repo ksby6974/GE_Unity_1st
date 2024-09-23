@@ -69,6 +69,11 @@ public class Runner : MonoBehaviour
         {
             animator.Play("Jump");
         }
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            animator.Play("Sliding");
+        }
+
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             if (roadLine != RoadLine.LEFT)

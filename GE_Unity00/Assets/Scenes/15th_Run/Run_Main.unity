@@ -666,6 +666,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Runner
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2b6d367932402ed49932c93f2fb6742e, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 2b6d367932402ed49932c93f2fb6742e, type: 3}
       propertyPath: m_Controller
       value: 
@@ -1128,7 +1132,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1193,7 +1197,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 800, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1301342447
 MonoBehaviour:
@@ -1242,8 +1246,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 100
+  m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

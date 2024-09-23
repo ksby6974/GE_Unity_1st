@@ -12,7 +12,7 @@ public class RoadManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        fSpeed = 4.0f;
+        fSpeed = 6.0f;
         offset = 40f;
         listroads.Capacity = 10;
         AddRoad();
@@ -38,7 +38,7 @@ public class RoadManager : MonoBehaviour
 
     public void NewPosition()
     {
-        Debug.Log($"NewPosition");
+        Debug.Log($"RoadManager - NewPosition");
 
         GameObject newRoad = listroads[0];
         listroads.Remove(newRoad);

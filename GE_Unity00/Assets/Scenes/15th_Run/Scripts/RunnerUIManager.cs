@@ -33,4 +33,9 @@ public class RunnerUIManager : MonoBehaviour
         
         textCScore.text = $"Score : {CurrentScore.ToString("F0")}";
     }
+
+    public void GetScore_Coin()
+    {
+        CurrentScore += 100;
+    }
 }
