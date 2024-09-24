@@ -21,6 +21,7 @@ public class Runner : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        animator.speed = 1;
         roadLine = RoadLine.MIDDLE;
         fMove = 4.0f;
         fSpeed = 25.0f;
@@ -34,7 +35,8 @@ public class Runner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       //OnKeyUpdate();
+       animator.speed = (GetComponent<SpeedManager>().Speed / 10);
+        Debug.Log($"{animator.speed}/ms");
     }
 
     private void FixedUpdate()

@@ -12,15 +12,19 @@ public class RoadManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        fSpeed = 6.0f;
+        //fSpeed = 6.0f;
         offset = 40f;
         listroads.Capacity = 10;
         AddRoad();
+
+        StartCoroutine(SpeedManager.Instance.SpeedUp());
     }
 
     // Update is called once per frame
     void Update()
     {
+        fSpeed = GetComponent<SpeedManager>().Speed;
+
         for (int i = 0; i < iCount; i++)
         {
             if (listroads[i] != null)
