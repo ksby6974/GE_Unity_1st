@@ -23,7 +23,8 @@ public class RoadManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        fSpeed = GetComponent<SpeedManager>().Speed;
+        //fSpeed = GetComponent<SpeedManager>().Speed;
+        fSpeed = SpeedManager.Instance.Speed;
 
         for (int i = 0; i < iCount; i++)
         {

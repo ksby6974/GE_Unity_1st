@@ -35,8 +35,8 @@ public class Runner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       animator.speed = (GetComponent<SpeedManager>().Speed / 10);
-        Debug.Log($"{animator.speed}/ms");
+        //animator.speed = (GetComponent<SpeedManager>().Speed / 10);
+       // Debug.Log($"{animator.speed}/ms");
     }
 
     private void FixedUpdate()
@@ -81,7 +81,7 @@ public class Runner : MonoBehaviour
             if (roadLine != RoadLine.LEFT)
             {
                 roadLine--;
-                Debug.Log($"аб {roadLine}");
+               // Debug.Log($"аб {roadLine}");
             }
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -89,7 +89,7 @@ public class Runner : MonoBehaviour
             if (roadLine != RoadLine.RIGHT)
             {
                 roadLine++;
-                Debug.Log($"©Л {roadLine}");
+                //Debug.Log($"©Л {roadLine}");
             }
         }
     }

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class SelectedButton : MonoBehaviour
 {
+    [SerializeField] AudioClip enterAudioClip;
     [SerializeField] Button button;
     [SerializeField] Text buttontext;
 
@@ -24,6 +25,8 @@ public class SelectedButton : MonoBehaviour
     public void ChangeSize_Enter()
     {
         buttontext.fontSize = 96;
+
+        AudioManager.Instance.Listen(enterAudioClip);
     }
 
     public void ChangeSize_Selected()

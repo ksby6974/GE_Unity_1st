@@ -31,7 +31,9 @@ public class CoinManager : MonoBehaviour
     {
         for (int i = 0; i < iCount; i++)
         {
-            GameObject clone = Instantiate(Coin);
+            //GameObject clone = Instantiate(Coin);
+            GameObject clone = ResourcesManager.Instantiate(Coin,null);
+
             clone.transform.SetParent(gameObject.transform);
 
             float newZ = clone.transform.position.z + (fOffset * i);

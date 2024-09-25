@@ -15,8 +15,15 @@ public class SpeedManager : Singleton<SpeedManager>
         get { return fRunnerSpeed; }
     }
 
+    public void Start()
+    {
+        fLimitSpeed = 40;
+    }
+
     public IEnumerator SpeedUp()
     {
+        //Debug.Log($"SpeedUp Start: {fRunnerSpeed}, {fLimitSpeed}");
+
         while (fRunnerSpeed < fLimitSpeed)
         {
             fRunnerSpeed += fIncreaseSpeed;
