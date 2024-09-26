@@ -9,6 +9,8 @@ public class RunnerUIManager : MonoBehaviour
     [SerializeField] float CurrentScore;
     [SerializeField] TextMeshProUGUI textTScore;
     [SerializeField] TextMeshProUGUI textCScore;
+    [SerializeField] TextMeshProUGUI textSpeed;
+    [SerializeField] SpeedManager speedManager;
 
     void Awake()
     {
@@ -32,6 +34,7 @@ public class RunnerUIManager : MonoBehaviour
         CurrentScore += 100 * Time.deltaTime;
         
         textCScore.text = $"Score : {CurrentScore.ToString("F0")}";
+        textSpeed.text = $"{speedManager.Speed}/ms";
     }
 
     public void GetScore_Coin()

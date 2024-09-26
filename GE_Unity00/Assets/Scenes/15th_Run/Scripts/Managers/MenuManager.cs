@@ -72,6 +72,8 @@ public class MenuManager : MonoBehaviour
 
     public void Execute()
     {
+        EventManager.Publish(EventType.START);
+
         StartCoroutine(ScManager.Instance.AsyncLoad(1));
     }
 

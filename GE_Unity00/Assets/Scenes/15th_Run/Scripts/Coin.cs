@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coin : MonoBehaviour
+public class Coin : State
 {
     [SerializeField] float fRotation;
     [SerializeField] GameObject rotationObject;
     [SerializeField] float fScore;
-    [SerializeField] ParticleSystem myParticle;
 
     private void Awake()
     {
@@ -17,6 +16,8 @@ public class Coin : MonoBehaviour
 
     void OnEnable()
     {
+        base.OnEnable();
+
         rotationObject = GameObject.Find("RotationObject");
         fRotation = rotationObject.GetComponent<RotationObject>().Speed;
         transform.localRotation = rotationObject.transform.rotation;
@@ -25,12 +26,16 @@ public class Coin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (state == false)
+        {
+            return;
+        }
+
         this.transform.Rotate(this.transform.rotation.x, (fRotation * Time.deltaTime), this.transform.rotation.z);
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
             Debug.Log($"Play");
-            myParticle.Play();
         }
     }
 
@@ -40,7 +45,6 @@ public class Coin : MonoBehaviour
         {
             Debug.Log($"C {fScore}");
             this.GetComponent<MeshRenderer>().enabled = false;
-            myParticle.Play();
         }
     }
 

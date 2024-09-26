@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoadManager : MonoBehaviour
+public class RoadManager : State
 {
     [SerializeField] int iCount = 10;
     [SerializeField] List<GameObject> listroads;
     [SerializeField] float fSpeed;
     [SerializeField] float offset;
+    [SerializeField] SpeedManager speedManager;
 
     // Start is called before the first frame update
     void Start()
@@ -16,15 +17,17 @@ public class RoadManager : MonoBehaviour
         offset = 40f;
         listroads.Capacity = 10;
         AddRoad();
-
-        StartCoroutine(SpeedManager.Instance.SpeedUp());
     }
 
     // Update is called once per frame
     void Update()
     {
-        //fSpeed = GetComponent<SpeedManager>().Speed;
-        fSpeed = SpeedManager.Instance.Speed;
+        if (state == false)
+        {
+            return;
+        }
+
+        fSpeed = speedManager.Speed;
 
         for (int i = 0; i < iCount; i++)
         {
