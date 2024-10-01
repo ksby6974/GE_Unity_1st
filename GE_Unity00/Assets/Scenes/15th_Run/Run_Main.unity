@@ -1195,8 +1195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66a5ece6d9738e849a2453eb21d9533e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacleObj: {fileID: 7951521155445873078, guid: 2b849f4824411dc4faa444ec6ea9c341, type: 3}
-  Obstacles: []
+  Cone: {fileID: 7951521155445873078, guid: 2b849f4824411dc4faa444ec6ea9c341, type: 3}
+  obstacles: []
   iCount: 0
   fOffset: 0
   fPositionX: 0
