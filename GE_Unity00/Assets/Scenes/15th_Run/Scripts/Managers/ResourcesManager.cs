@@ -16,6 +16,7 @@ public class ResourcesManager : Singleton<ResourcesManager>
         if (prefab == null)
         {
             Debug.Log($"Failed to Load Prefab : {prefab}");
+            return null;
         }
 
         GameObject clone = Object.Instantiate(prefab, parent);

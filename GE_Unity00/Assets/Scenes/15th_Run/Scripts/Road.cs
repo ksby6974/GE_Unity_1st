@@ -10,6 +10,6 @@ public class Road : MonoBehaviour, IHitable
     public void Activate()
     {
         callback.Invoke();
-        Debug.Log($"충돌");
+       // Debug.Log($"충돌");
     }
 }

@@ -54,5 +54,7 @@ public class RoadManager : State
         float newZ = listroads[listroads.Count - 1].transform.position.z + offset;
         newRoad.transform.position = new Vector3(newRoad.transform.position.x, newRoad.transform.position.y, newZ);
         listroads.Add(newRoad);
+
+        // ObstaclePositionManager.
     }
 }

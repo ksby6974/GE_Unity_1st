@@ -27,7 +27,7 @@ public class SpeedManager : State
 
     public IEnumerator SpeedUp()
     {
-        Debug.Log($"SpeedUp Start: {fRunnerSpeed}, {fLimitSpeed}");
+       // Debug.Log($"SpeedUp Start: {fRunnerSpeed}, {fLimitSpeed}");
 
         while ((state == true) && (fRunnerSpeed < fLimitSpeed))
         {

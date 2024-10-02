@@ -70,6 +70,6 @@ public class CoinManager : MonoBehaviour
             sTemp += $"{i} ";
         }
 
-        Debug.Log($"{sTemp}");
+       // Debug.Log($"{sTemp}");
     }
 }
