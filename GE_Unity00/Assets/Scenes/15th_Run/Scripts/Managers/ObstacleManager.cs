@@ -30,8 +30,8 @@ public class ObstacleManager : MonoBehaviour
     {
         for (int i = 0; i < iCount; i++)
         {
-            //GameObject obstalcePrefab = ResourcesManager.Instantiate(Cone, this.gameObject.transform);
-            obstalcePrefab = ResourcesManager.Instance.Instantiate("Cone", this.gameObject.transform);
+           // obstalcePrefab = ResourcesManager.Instantiate(Cone, this.gameObject.transform);
+            obstalcePrefab = ResourcesManager.Instance.Instantiate("Cone", gameObject.transform);
             obstalcePrefab.SetActive(false);
             obstacles.Add(obstalcePrefab);
         }
@@ -46,7 +46,7 @@ public class ObstacleManager : MonoBehaviour
 
         while (true)
         {
-            yield return CoroutineCache.waitForSeconds(2f);
+            yield return CoroutineCache.waitForSeconds(2.5f);
 
             iRandom = Random.Range(0, obstacles.Count);
 
@@ -56,7 +56,7 @@ public class ObstacleManager : MonoBehaviour
                 //현재 리스트에 있는 모든 게임 오브젝트가 활성화되어 있는가 확인
                 if (ExamineActive())
                 {
-                    // 모든 게임 오브젝트가 활성화되어있다면 게임 오브젝트를 새로 생성한 다음 obstalces 리스트에 삽입
+                    // 모든 게임 오브젝트가 활성화되어있다면 게임 오브젝트를 새로 생성한 다음 obstacles 리스트에 삽입
                     GameObject Clone = ResourcesManager.Instance.Instantiate("Cone", gameObject.transform);
                     Clone.SetActive(false);
                     obstacles.Add(Clone);
@@ -65,6 +65,7 @@ public class ObstacleManager : MonoBehaviour
                 //현재 리스트에 있는 모든 게임 오브젝트가 비활성화 상태라면 random 변수의 값을 +1해서 재검색
                 iRandom = (iRandom + 1) % obstacles.Count;
 
+                //Debug.Log($"ActiveObstacle : {iCount}번 반복 > {iLimit} / 임의 {iRandom}, 카운트{obstacles.Count}");
                 if (iCount > iLimit)
                 {
                     Debug.Log($"ActiveObstacle : Infinity Loop Cancle");
@@ -73,12 +74,12 @@ public class ObstacleManager : MonoBehaviour
                 else
                 {
                     iCount++;
-                    Debug.Log($"ActiveObstacle : {iCount}번 반복 / 임의 {iRandom}, 카운트{obstacles.Count}");
                 }
             }
 
             // 랜덤으로 설정된 Obstalce 오브젝트를 활성화
             obstacles[iRandom].SetActive(true);
+            Debug.Log($"obstacles {iRandom}번째 활성화");
         }
     }
 
@@ -93,5 +94,10 @@ public class ObstacleManager : MonoBehaviour
         }
 
         return true;
+    }
+
+    public GameObject GetObstacle()
+    {
+        return obstacles[iRandom];
     }
 }

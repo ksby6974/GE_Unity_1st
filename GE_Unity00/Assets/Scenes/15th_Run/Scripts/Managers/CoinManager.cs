@@ -57,7 +57,7 @@ public class CoinManager : MonoBehaviour
     public void InitializePosition()
     {
         string sTemp = null;
-        Debug.Log($"CoinManager - InitializePosition");
+        //Debug.Log($"CoinManager - InitializePosition");
         transform.localPosition = new Vector3(fPositionX * Random.Range(-1, 2), 0, 0);
 
         for (int i = 0; i < iCount; i++)

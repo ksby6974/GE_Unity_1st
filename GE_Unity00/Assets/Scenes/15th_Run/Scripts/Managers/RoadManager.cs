@@ -46,7 +46,7 @@ public class RoadManager : State
 
     public void NewPosition()
     {
-        Debug.Log($"RoadManager - NewPosition");
+        //Debug.Log($"RoadManager - NewPosition");
 
         GameObject newRoad = listroads[0];
         listroads.Remove(newRoad);

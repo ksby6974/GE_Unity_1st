@@ -35,7 +35,7 @@ public class Coin : State
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Debug.Log($"Play");
+          //  Debug.Log($"Play");
         }
     }
 
@@ -43,7 +43,7 @@ public class Coin : State
     {
         if (this.GetComponent<MeshRenderer>().enabled == true & c.gameObject.CompareTag("Player"))
         {
-            Debug.Log($"C {fScore}");
+            //Debug.Log($"C {fScore}");
             this.GetComponent<MeshRenderer>().enabled = false;
         }
     }
